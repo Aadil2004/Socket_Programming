@@ -45,6 +45,7 @@ def main():
         except Exception as e:
             print("[SERVER] Error processing request:", e)
 
+        #End connection
         connection_socket.close()
         print("[SERVER] Connection closed.\n")
 

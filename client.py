@@ -7,7 +7,10 @@ CLIENT_NAME = "Client of Aa’dil Khamis Ngangila"
 def main():
     client_number = int(input("Enter an integer between 1 and 100: "))
 
+    # Create TCP socket using IPv4 and TCP protocol
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+    # Bind socket to all interfaces on chosen port
     client_socket.connect((SERVER_HOST, SERVER_PORT))
 
     message = f"{CLIENT_NAME}|{client_number}"
@@ -28,6 +31,7 @@ def main():
     print(f"[CLIENT] Server Number: {server_number}")
     print(f"[CLIENT] Sum: {total}")
 
+    #End the connections
     client_socket.close()
     print("[CLIENT] Connection closed.")
 
