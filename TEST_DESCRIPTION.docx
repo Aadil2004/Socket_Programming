@@ -1,0 +1,125 @@
+TEST DESCRIPTION DOCUMENT
+Socket Programming Assignment 1
+
+Test Description Document
+Author: Aa’dil Khamis Ngangila
+
+1. Objective of Testing
+
+The objective of testing was to verify:
+
+Correct message transmission
+
+Correct integer parsing
+
+Proper sum calculation
+
+Correct server shutdown behavior
+
+Proper socket closing
+
+2. Test Cases Performed
+Test Case 1 — Normal Input
+
+Input:
+
+25
+
+Server number: 50
+Expected sum: 75
+
+Result:
+
+Server displayed correct values
+
+Client displayed correct values
+
+Sum matched on both sides
+
+Status: ✅ Passed
+
+Test Case 2 — Lower Boundary
+
+Input:
+
+1
+
+Expected sum: 51
+
+Result:
+Correct output.
+
+Status: ✅ Passed
+
+Test Case 3 — Upper Boundary
+
+Input:
+
+100
+
+Expected sum: 150
+
+Result:
+Correct output.
+
+Status: ✅ Passed
+
+Test Case 4 — Invalid Input (Above Range)
+
+Input:
+
+150
+
+Expected behavior:
+
+Server detects invalid number
+
+Server terminates
+
+Sockets close properly
+
+Result:
+Server shut down as expected.
+
+Status: ✅ Passed
+
+Test Case 5 — Multiple Sequential Clients
+
+Procedure:
+
+Run client multiple times sequentially.
+
+Result:
+Server handled connections correctly.
+
+Status: ✅ Passed
+
+3. Verification of Correctness
+
+For each valid test:
+
+Sum computed on server matched sum computed on client.
+
+No data corruption observed.
+
+No socket leakage occurred.
+
+Connections were properly closed.
+
+4. Known Limitations
+
+The following limitations were identified:
+
+Server is not concurrent.
+
+No handling for malformed messages.
+
+No timeout mechanism.
+
+Client does not validate input before sending.
+
+No encryption.
+
+5. Conclusion
+
+All functional requirements were tested and verified. The program behaves correctly under normal and boundary conditions and properly handles invalid input as specified.

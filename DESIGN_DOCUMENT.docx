@@ -1,0 +1,214 @@
+DESIGN DOCUMENT
+Socket Programming Assignment 1
+
+Design Document
+Author: Aa’dil Khamis Ngangila
+
+1. Overall Program Design
+
+This project implements a TCP client-server architecture using Python’s socket library.
+
+The system consists of two independent processes:
+
+A server process
+
+A client process
+
+The communication model follows the standard TCP workflow:
+
+Server creates a socket.
+
+Server binds to a port (6000).
+
+Server listens for incoming connections.
+
+Client creates a socket.
+
+Client connects to the server.
+
+Client sends a message.
+
+Server processes the message and responds.
+
+Both sides close their sockets.
+
+The protocol used is TCP because it guarantees:
+
+Reliable transmission
+
+Ordered delivery
+
+Error detection
+
+2. Communication Protocol
+
+Messages are exchanged in the following format:
+
+Name|Integer
+
+Example:
+
+Client of Aa’dil Khamis Ngangila|25
+
+The delimiter | was chosen because:
+
+It is simple
+
+It allows easy parsing using .split("|")
+
+It avoids complex serialization mechanisms
+
+3. How the Program Works (Step-by-Step)
+Server Execution Flow
+
+Creates a TCP socket using IPv4.
+
+Binds to port 6000 (greater than 5000 as required).
+
+Begins listening for client connections.
+
+Accepts a client connection.
+
+Receives client message.
+
+Extracts:
+
+Client name
+
+Client integer
+
+Validates that integer is between 1 and 100.
+
+If invalid:
+
+Closes sockets
+
+Terminates server
+
+If valid:
+
+Chooses its own integer (50)
+
+Computes sum
+
+Displays values
+
+Sends server name and integer back
+
+Closes client connection.
+
+Client Execution Flow
+
+Prompts user to enter integer (1–100).
+
+Creates TCP socket.
+
+Connects to server.
+
+Sends formatted message.
+
+Waits for server response.
+
+Receives server name and integer.
+
+Computes sum locally.
+
+Displays results.
+
+Closes socket.
+
+4. Design Decisions and Tradeoffs
+Fixed Server Integer (50)
+
+The server uses a fixed integer instead of random for:
+
+Predictable testing
+
+Easier debugging
+
+Deterministic behavior
+
+Tradeoff:
+Less realistic than random generation.
+
+Single-Threaded Server
+
+The server handles one client at a time.
+
+Advantages:
+
+Simpler implementation
+
+Easier debugging
+
+Fewer synchronization issues
+
+Tradeoff:
+
+Cannot handle multiple clients simultaneously.
+
+Simple String Protocol Instead of JSON
+
+Advantages:
+
+Minimal complexity
+
+Easy parsing
+
+Tradeoff:
+
+Less scalable
+
+Not structured for larger systems
+
+Port Selection (6000)
+
+Chosen because:
+
+Assignment requires port > 5000
+
+Avoids reserved system ports
+
+Reduces conflict risk
+
+5. Possible Improvements and Extensions
+
+Several improvements could enhance the system:
+
+1. Concurrent Server
+
+Use Python’s threading module to handle multiple clients simultaneously.
+
+Implementation sketch:
+
+Accept connection
+
+Create new thread
+
+Handle client inside thread
+
+2. Random Server Integer
+
+Use:
+
+import random
+server_number = random.randint(1, 100)
+3. JSON-Based Protocol
+
+Replace string format with:
+
+{"name": "Client", "number": 25}
+
+Improves scalability and clarity.
+
+4. Logging System
+
+Use Python logging module to write activity to file.
+
+5. Input Validation on Client Side
+
+Prevent sending invalid integers before server validation.
+
+6. Conclusion
+
+This implementation correctly follows TCP client-server architecture principles and meets all assignment requirements. The design prioritizes simplicity, correctness, and clarity over advanced concurrency features.
