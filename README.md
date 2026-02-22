@@ -1,11 +1,3 @@
-# Socket_Programming
-Below is a **clean, submission-ready `README.md`** for your GitHub repository.
-It is written in professional technical style suitable for grading.
-
-You can copy this directly into your `README.md` file.
-
----
-
 # Socket Programming – Programming Assignment 1
 
 ## Author
